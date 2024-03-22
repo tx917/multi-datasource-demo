@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    test1:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 在SpringBoot中，默认使用的连接池是HikariDataSource，而在HikariConfig配置项中，没有url配置项，只有jdbc-url
+      # 所以在此处配置url，在配置类中，不能使用原生的DataSourceBuilder创建DataSource对象
+      url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 123456
+    test2:
+      # type: com.alibaba.druid.pool.DruidDataSource #在多数据源中配置type不会起作用，DataSource是在配置类中创建指定的
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 在SpringBoot中，默认使用的连接池是HikariDataSource，而在HikariConfig配置项中，没有url配置项，只有jdbc-url
+      jdbc-url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 123456
+
+logging:
+  level:
+    root: debug
