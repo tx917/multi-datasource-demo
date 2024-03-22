@@ -1,5 +1,6 @@
 package com.jingai.multidatasource.config;
 
+import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
@@ -33,7 +34,7 @@ public class Test2DataSourceConfig {
     @Primary
     public SqlSessionFactory test2SqlSessionFactory(@Qualifier("test2DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-//        bean.setConfiguration(new MybatisConfiguration());
+        bean.setConfiguration(new MybatisConfiguration());
         bean.setDataSource(dataSource);
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
         mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
